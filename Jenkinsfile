@@ -27,25 +27,28 @@ spec:
     imagePullPolicy: Always
     resources:
       limits:
-        memory: "2048Mi"
+        memory: "3Gi"
         cpu: "1000m"
       requests:
-        memory: "2048Mi"
+        memory: "3Gi"
         cpu: "1000m"
 """
         }
+    }
+    options {
+        ansiColor('xterm')
     }
     environment {
         GITHUB_ORGANIZATION = 'gudari'
         GITHUB_REPO         = 'ranger'
         VERSION             = '2.2.0'
         GITHUB_TOKEN        = credentials('github_token')
+        MAVEN_OPTS          = "-Xmx2048m -XX:MaxPermSize=512m"
     }
     stages {
         stage('Build') {
             steps {
-                sh ("mvn -DskipTests=true clean compile package install assembly:assembly")
-
+                sh ("mvn -Pall -DskipTests=true clean compile package install")
                 sh ("./create_release.sh $GITHUB_ORGANIZATION $GITHUB_REPO $VERSION $GITHUB_TOKEN")
             }
         }
