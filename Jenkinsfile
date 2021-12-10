@@ -25,6 +25,13 @@ spec:
   - name: jnlp
     image: gudari/jenkins-agent:4.9-ranger-arm64
     imagePullPolicy: Always
+    resources:
+      limits:
+        memory: "2048Mi"
+        cpu: "1000m"
+      requests:
+        memory: "2048Mi"
+        cpu: "1000m"
 """
         }
     }
