@@ -733,5 +733,15 @@
             <artifactId>ranger-elasticsearch-plugin-shim</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.ranger</groupId>
+            <artifactId>ranger-trino-plugin</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ranger</groupId>
+            <artifactId>ranger-trino-plugin-shim</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
